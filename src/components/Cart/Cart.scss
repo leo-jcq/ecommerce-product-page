@@ -1,0 +1,43 @@
+@import '/scss/variables';
+
+.cart {
+    & .cart-icon {
+        width: 22px;
+        height: 20px;
+
+        position: relative;
+        
+        cursor: pointer;
+
+        &::after {
+            content: attr(data-nbProduct);
+
+            width: 20px;
+            height: 15px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 15px;
+
+            background-color: $orange;
+
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translate(50%, -50%);
+
+            font-size: .6rem;
+            color: $white;
+        }
+
+        & path {
+            transition: fill .2s ease;
+        }
+
+        &:hover path {
+            fill: $very-dark-blue;
+        }
+    }
+}
