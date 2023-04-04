@@ -1,7 +1,7 @@
-
+import { FC } from 'react';
 import './Cart.scss';
 
-const Cart = () => {
+const Cart: FC = () => {
     return (
         <div className="cart">
             <div className="cart-icon" data-nbProduct="3">
@@ -13,7 +13,6 @@ const Cart = () => {
                     />
                 </svg>
             </div>
-            
         </div>
     );
 };

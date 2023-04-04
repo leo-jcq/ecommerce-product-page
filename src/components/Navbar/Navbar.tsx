@@ -1,9 +1,10 @@
+import { FC } from 'react';
 import imageAvatar from '../../assets/image-avatar.png';
 import logo from '../../assets/logo.svg';
 import Cart from '../Cart/Cart';
 import './Navbar.scss';
 
-const Navbar = () => {
+const Navbar: FC = () => {
     return (
         <nav>
             <div className="left">
