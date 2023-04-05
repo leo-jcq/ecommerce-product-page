@@ -1,11 +1,13 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import { iconCart, iconDelete } from '../../assets/icons';
 import imageProduct1 from '../../assets/image-product-1-thumbnail.jpg';
+import { useCart } from '../../contexts/CartContext';
 import './Cart.scss';
 
 const Cart: FC = () => {
     const [open, setOpen] = useState<boolean>(false);
     const rootRef = useRef<HTMLDivElement>(null);
+    const nbProducts = useCart();
 
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
@@ -24,9 +26,6 @@ const Cart: FC = () => {
     const handleClick = (): void => {
         setOpen(!open);
     };
-
-    // TODO: temporaire
-    const [nbProducts, setNbProcust] = useState<number>(3);
 
     return (
         <div className="cart" ref={rootRef}>
@@ -53,7 +52,8 @@ const Cart: FC = () => {
                                     <div className="text">
                                         <span className="name">Fall Limited Edition Sneakers</span>
                                         <span className="price">
-                                            $125.00 x {nbProducts} <b>${(125.00 * nbProducts).toFixed(2)}</b>
+                                            $125.00 x {nbProducts}{' '}
+                                            <b>${(125.0 * nbProducts).toFixed(2)}</b>
                                         </span>
                                     </div>
 
@@ -63,7 +63,7 @@ const Cart: FC = () => {
                                 <button className="checkout">Checkout</button>
                             </>
                         ) : (
-                            <span className="empty">Your cart is emptys</span>
+                            <span className="empty">Your cart is empty.</span>
                         )}
                     </div>
                 </div>
