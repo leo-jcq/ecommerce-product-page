@@ -1,6 +1,6 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import { iconCart, iconDelete } from '../../assets/icons';
-import imageProduct1 from '../../assets/image-product-1-thumbnail.jpg';
+import imageProduct1 from '../../assets/image-product-1.jpg';
 import { useCart } from '../../contexts/CartContext';
 import './Cart.scss';
 
