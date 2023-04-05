@@ -81,14 +81,10 @@ nav {
 
             border-radius: 50%;
 
-            &:hover {
-                outline: 2px solid $orange;
-            }
+            transition: box-shadow .2s ease;
 
-            &:active {
-                outline: none;
-                
-                border: 2px solid $orange;
+            &:hover {
+                box-shadow: 0 0 0 2px $orange;
             }
         }
     }
