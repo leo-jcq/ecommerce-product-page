@@ -1,0 +1,65 @@
+@import "/scss/variables";
+
+.mainPopUp {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: $black-75;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    & .content {
+        animation: showPopUpContent .3s linear;
+
+        position: relative;
+    }
+
+    & .closeBtn {
+        width: 20px;
+        height: 20px;
+
+        background-color: transparent;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translateY(-200%);
+
+        cursor: pointer;
+
+        border: none;
+
+        & svg {
+            transform: scale(1.33);
+        }
+
+        &:hover path {
+            fill: $orange;
+        }
+    }
+
+    & .mainImage {
+        width: 550px;
+        height: 550px;
+    }
+}
+
+@keyframes showPopUpContent {
+    from {
+        transform: scale(0);
+
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        
+        opacity: 1;
+    }
+}

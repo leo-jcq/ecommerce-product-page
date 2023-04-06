@@ -6,12 +6,12 @@ import './Cart.scss';
 
 const Cart: FC = () => {
     const [open, setOpen] = useState<boolean>(false);
-    const rootRef = useRef<HTMLDivElement>(null);
+    const cartRef = useRef<HTMLDivElement>(null);
     const nbProducts = useCart();
 
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
-            if (rootRef.current && !rootRef.current.contains(e.target as Node)) {
+            if (cartRef.current && !cartRef.current.contains(e.target as Node)) {
                 setOpen(false);
             }
         };
@@ -21,14 +21,14 @@ const Cart: FC = () => {
         return () => {
             document.removeEventListener('click', handleClickOutside);
         };
-    }, [rootRef]);
+    }, [cartRef]);
 
     const handleClick = (): void => {
         setOpen(!open);
     };
 
     return (
-        <div className="cart" ref={rootRef}>
+        <div className="cart" ref={cartRef}>
             <div
                 className={'cart-icon' + (nbProducts > 0 ? ' products' : '')}
                 data-nbproducts={nbProducts}
