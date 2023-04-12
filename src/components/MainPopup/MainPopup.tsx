@@ -1,6 +1,6 @@
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC } from 'react';
 import { iconClose } from '../../assets/icons';
-import Images from '../Images/Images';
+import Gallery from '../Gallery/Gallery';
 import './MainPopup.scss';
 
 interface MainPopupProps {
@@ -8,15 +8,14 @@ interface MainPopupProps {
 }
 
 const MainPopup: FC<MainPopupProps> = ({ handleClose }) => {
-    
 
     return (
-        <div className="mainPopUp">
+        <div className="main-popup">
             <div className="content">
                 <button className="closeBtn" onClick={handleClose}>
                     {iconClose}
                 </button>
-                <Images popUp={false} buttons={true} />
+                <Gallery popUp={false} />
             </div>
         </div>
     );

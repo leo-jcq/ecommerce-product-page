@@ -1,12 +1,10 @@
-import Images from '../Images/Images';
-import Infos from '../Infos/Infos';
+import Gallery from '../Gallery/Gallery';
 import './Main.scss';
 
 const Main = () => {
     return (
         <main className="main">
-            <Images />
-            <Infos />
+            <Gallery />
         </main>
     );
 };
