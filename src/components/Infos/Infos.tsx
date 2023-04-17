@@ -1,6 +1,21 @@
+import { FC } from 'react';
 import './Infos.scss';
+import { iconCart } from '../../assets/icons';
 
-const Infos = () => {
+const Infos: FC = () => {
+
+    const handleAddToCart = () => {
+        // TODO: si pas chaussure 0 -> ajouter 1
+    }
+
+    const handleMinus = () => {
+        // TODO: -1 chaussure (min 0)
+    }
+
+    const handlePlus = () => {
+        // TODO: +1 chaussure
+    }
+
     return (
         <div className="infos">
             <p className="company">SNEAKER COMPANY</p>
@@ -14,7 +29,12 @@ const Infos = () => {
             </p>
             <p className="original-price">$250.00</p>
 
-            
+            <div className="buttons">
+                <button className="addToCart" onClick={handleAddToCart}>
+                    {iconCart}
+                    <span className="text">Add to cart</span>
+                </button>
+            </div>
         </div>
     );
 };

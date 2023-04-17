@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, memo, useState } from 'react';
 import { iconNext, iconPrevious } from '../../assets/icons';
 import ImageProduct1 from '../../assets/image-product-1.jpg';
 import ImageProduct2 from '../../assets/image-product-2.jpg';
@@ -18,7 +18,7 @@ const Gallery: FC<GalleryProps> = ({ popUp = true }) => {
     const [imageIndex, setImageIndex] = useState<number>(0);
     const [open, setOpen] = useState<boolean>(false);
 
-    const handleNextImage = () => {
+    const handlePrevImage = () => {
         if (imageIndex === 0) {
             setImageIndex(images.length - 1);
         } else {
@@ -26,7 +26,7 @@ const Gallery: FC<GalleryProps> = ({ popUp = true }) => {
         }
     };
 
-    const handlePrevImage = () => {
+    const handleNextImage = () => {
         if (imageIndex === images.length - 1) {
             setImageIndex(0);
         } else {
@@ -57,18 +57,16 @@ const Gallery: FC<GalleryProps> = ({ popUp = true }) => {
             </div>
             <div className="thumbnails">
                 {images.map((src, index) => (
-                    <div className="thumbnail">
-                        <img
-                            src={src}
-                            alt={'Image ' + (index + 1)}
-                            onClick={() => setImageIndex(index)}
-                        />
+                    <div
+                        className={'thumbnail' + (imageIndex == index ? ' active' : '')}
+                        onClick={() => setImageIndex(index)}>
+                        <img src={src} alt={'Image ' + (index + 1)} />
                     </div>
                 ))}
             </div>
-            {popUp && <MainPopup handleClose={handlePopUpChange} />}
+            {popUp && open && <MainPopup handleClose={handlePopUpChange} />}
         </div>
     );
 };
 
-export default Gallery;
+export default memo(Gallery);
