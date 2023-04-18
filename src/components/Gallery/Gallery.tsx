@@ -18,27 +18,12 @@ const Gallery: FC<GalleryProps> = ({ popUp = true }) => {
     const [imageIndex, setImageIndex] = useState<number>(0);
     const [open, setOpen] = useState<boolean>(false);
 
-    const handlePrevImage = () => {
-        if (imageIndex === 0) {
-            setImageIndex(images.length - 1);
-        } else {
-            setImageIndex(imageIndex - 1);
-        }
-    };
+    const handlePrevImage = () =>
+        setImageIndex(imageIndex === 0 ? images.length - 1 : imageIndex - 1);
 
-    const handleNextImage = () => {
-        if (imageIndex === images.length - 1) {
-            setImageIndex(0);
-        } else {
-            setImageIndex(imageIndex + 1);
-        }
-    };
+    const handleNextImage = () => setImageIndex((imageIndex + 1) % images.length);
 
-    const handlePopUpChange = () => {
-        if (popUp) {
-            setOpen(!open);
-        }
-    };
+    const handlePopUpChange = () => popUp && setOpen(!open);
 
     return (
         <div className="gallery">
@@ -58,6 +43,7 @@ const Gallery: FC<GalleryProps> = ({ popUp = true }) => {
             <div className="thumbnails">
                 {images.map((src, index) => (
                     <div
+                        key={index}
                         className={'thumbnail' + (imageIndex == index ? ' active' : '')}
                         onClick={() => setImageIndex(index)}>
                         <img src={src} alt={'Image ' + (index + 1)} />

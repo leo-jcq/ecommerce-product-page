@@ -1,20 +1,17 @@
 import { FC } from 'react';
 import './Infos.scss';
-import { iconCart } from '../../assets/icons';
+import { iconCart, iconMinus, iconPlus } from '../../assets/icons';
+import { useCart, useCartUpdate } from '../../contexts/CartContext';
 
 const Infos: FC = () => {
+    const nbProducts = useCart(),
+        cartUpdate = useCartUpdate();
 
-    const handleAddToCart = () => {
-        // TODO: si pas chaussure 0 -> ajouter 1
-    }
+    const handleAddToCart = () => !nbProducts && cartUpdate(1);
 
-    const handleMinus = () => {
-        // TODO: -1 chaussure (min 0)
-    }
+    const handleMinus = () => nbProducts > 0 && cartUpdate(nbProducts - 1);
 
-    const handlePlus = () => {
-        // TODO: +1 chaussure
-    }
+    const handlePlus = () => cartUpdate(nbProducts + 1);
 
     return (
         <div className="infos">
@@ -24,12 +21,22 @@ const Infos: FC = () => {
                 These low-profile sneakers are your perfect casual wear companion. Featuring a
                 durable rubber outer sole, they’ll withstand everything the weather can offer.
             </p>
-            <p className="price">
-                $125.00 <span className="discount">50%</span>
-            </p>
-            <p className="original-price">$250.00</p>
+            <div className="price">
+                <p>$125.00</p>
+                <span>50%</span>
+            </div>
+            <p className="originalPrice">$250.00</p>
 
             <div className="buttons">
+                <div className="controls">
+                    <button className="minus" onClick={handleMinus}>
+                        {iconMinus}
+                    </button>
+                    <span className="nbProducts">{nbProducts}</span>
+                    <button className="plus" onClick={handlePlus}>
+                        {iconPlus}
+                    </button>
+                </div>
                 <button className="addToCart" onClick={handleAddToCart}>
                     {iconCart}
                     <span className="text">Add to cart</span>

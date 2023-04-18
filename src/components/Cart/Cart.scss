@@ -1,3 +1,4 @@
+@import "/scss/placeholders";
 @import "/scss/variables";
 
 .cart {
@@ -17,9 +18,7 @@
             width: 20px;
             height: 15px;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            @extend %flex-center;
 
             border-radius: 15px;
 
@@ -128,6 +127,10 @@
     & .delete {
         cursor: pointer;
 
+        background-color: transparent;
+
+        border: none;
+
         &:hover path {
             fill: $orange;
         }
@@ -137,13 +140,8 @@
         width: 100%;
         height: 54px;
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @extend %btn-default;
 
-        cursor: pointer;
-
-        border: none;
         border-radius: 10px;
 
         background-color: $orange;

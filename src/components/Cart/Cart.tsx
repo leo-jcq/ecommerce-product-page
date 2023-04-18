@@ -1,13 +1,14 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import { iconCart, iconDelete } from '../../assets/icons';
 import imageProduct1 from '../../assets/image-product-1.jpg';
-import { useCart } from '../../contexts/CartContext';
+import { useCart, useCartUpdate } from '../../contexts/CartContext';
 import './Cart.scss';
 
 const Cart: FC = () => {
     const [open, setOpen] = useState<boolean>(false);
     const cartRef = useRef<HTMLDivElement>(null);
     const nbProducts = useCart();
+    const cartUpdate = useCartUpdate();
 
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
@@ -23,9 +24,9 @@ const Cart: FC = () => {
         };
     }, [cartRef]);
 
-    const handleClick = (): void => {
-        setOpen(!open);
-    };
+    const handleClick = () => setOpen(!open);
+
+    const handleDeleteCart = () => cartUpdate(0);
 
     return (
         <div className="cart" ref={cartRef}>
@@ -57,7 +58,9 @@ const Cart: FC = () => {
                                         </span>
                                     </div>
 
-                                    <div className="delete">{iconDelete}</div>
+                                    <button className="delete" onClick={handleDeleteCart}>
+                                        {iconDelete}
+                                    </button>
                                 </div>
 
                                 <button className="checkout">Checkout</button>

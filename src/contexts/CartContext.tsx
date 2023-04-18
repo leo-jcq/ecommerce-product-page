@@ -21,7 +21,9 @@ const CartProvider: FC<CartProviderProps> = ({ children }) => {
     return (
         <>
             <CartContext.Provider value={cart}>
-                <CartUpdateContext.Provider value={setCart}>{children}</CartUpdateContext.Provider>
+                <CartUpdateContext.Provider value={setCart}>
+                    {children}
+                    </CartUpdateContext.Provider>
             </CartContext.Provider>
         </>
     );

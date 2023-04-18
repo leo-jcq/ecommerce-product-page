@@ -1,12 +1,11 @@
+@import "/scss/placeholders";
 @import "/scss/variables";
 
 .main-popup {
     width: 100vw;
     height: 100vh;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @extend %flex-center;
 
     background-color: $black-75;
 
@@ -15,7 +14,7 @@
     left: 0;
 
     & .content {
-        animation: showPopUpContent .3s linear;
+        animation: showPopUpContent 0.3s linear;
 
         position: relative;
     }
@@ -48,6 +47,10 @@
         display: flex !important;
     }
 
+    & .mainImage {
+        cursor: default !important;
+    }
+
     & .prevBtn {
         left: 0;
         transform: translate(-50%, -50%);
@@ -73,7 +76,7 @@
 
     to {
         transform: scale(1);
-        
+
         opacity: 1;
     }
 }
