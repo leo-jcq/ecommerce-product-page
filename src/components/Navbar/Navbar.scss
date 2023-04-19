@@ -101,6 +101,12 @@ nav {
     }
 }
 
+@media screen and (max-width: 1000px) {
+    nav {
+        border-bottom: none;
+    }
+}
+
 @media screen and (max-width: 800px) {
     nav {
         height: 68px;
@@ -128,27 +134,41 @@ nav {
 
         & ul {
             height: 100vh;
-            width: 250px;
+            width: auto;
 
             background-color: $white;
-
-            padding: 92px 25px;
-
-            visibility: hidden;
 
             flex-direction: column;
             gap: 32px;
             align-items: flex-start;
 
             position: fixed;
-            z-index: 110;
+            z-index: 100;
             top: 0;
             left: 0;
 
+            transition: width 0.5s ease;
+
+            &.close {
+                width: 0;
+
+                visibility: hidden;
+
+                padding: none;
+
+                transition: width 0.5s ease, visibility 0s 0.4s;
+
+                & li {
+                    display: none;
+                }
+            }
+
             &.open {
+                width: 250px;
+
                 visibility: visible;
 
-                animation: slide 0.5s ease;
+                padding: 92px 25px;
             }
 
             &::before {
@@ -157,12 +177,11 @@ nav {
                 width: 100vw;
                 height: 100vh;
 
-                background-color: $black-75;
-
                 position: absolute;
-                z-index: 100;
                 top: 0;
                 left: 100%;
+
+                background-color: $black-75;
             }
         }
 
@@ -189,15 +208,5 @@ nav {
             width: 30px;
             height: 30px;
         }
-    }
-}
-
-@keyframes slide {
-    from {
-        transform: translateX(-100%);
-    }
-
-    to {
-        transform: translateX(0);
     }
 }

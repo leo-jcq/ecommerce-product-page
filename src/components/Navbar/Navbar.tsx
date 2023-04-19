@@ -8,8 +8,9 @@ import './Navbar.scss';
 const Navbar: FC = () => {
     const menuRef = useRef<HTMLUListElement>(null);
 
-    const handleNavChange = ():void => {
+    const handleNavChange = () => {
         menuRef.current?.classList.toggle('open');
+        menuRef.current?.classList.toggle('close');
     }
 
     return (
@@ -19,7 +20,7 @@ const Navbar: FC = () => {
                 <div className="logo">
                     <img src={logo} alt="sneakers" />
                 </div>
-                <ul ref={menuRef}>
+                <ul ref={menuRef} className='close'>
                     <li className="closeBtn" onClick={handleNavChange}>{iconClose}</li>
                     <li>
                         <a href="#">Collections</a>

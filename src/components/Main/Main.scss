@@ -8,3 +8,23 @@
         width: 50%;
     }
 }
+
+@media screen and (max-width: 1050px) {
+    .main {
+        padding: 60px 0;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .main {
+        width: 100%;
+
+        padding: 0;
+
+        display: block;
+
+        &>* {
+            width: 100%;
+        }
+    }
+}

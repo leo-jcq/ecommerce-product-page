@@ -52,16 +52,6 @@
         cursor: default !important;
     }
 
-    & .prevBtn {
-        left: 0;
-        transform: translate(-50%, -50%);
-    }
-
-    & .nextBtn {
-        right: 0;
-        transform: translate(50%, -50%);
-    }
-
     & .mainImage {
         width: 550px;
         height: 550px;
@@ -79,5 +69,12 @@
         transform: scale(1);
 
         opacity: 1;
+    }
+}
+
+
+@media screen and (max-width: 1000px) {
+    .main-popup {
+        display: none;
     }
 }
